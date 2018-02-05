@@ -19,4 +19,7 @@ protected:
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
+
+	float cameraX = 100;
+	float cameraY = -100;
 };
