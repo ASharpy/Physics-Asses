@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DEA49362-B428-4215-8D64-4EA0B4FF0858}</ProjectGuid>
+    <ProjectGuid>{AB68B274-5DD2-4F2C-81C2-4020A4536252}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>aieProject2D1</RootNamespace>
+    <RootNamespace>PhysicsEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -162,11 +162,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="aieProject2D1App.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PhysicsEngineApp.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhysicsScene.cpp" />
+    <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="aieProject2D1App.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="PhysicsEngineApp.h" />
+    <ClInclude Include="PhysicsScene.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="Sphere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

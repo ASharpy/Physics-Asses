@@ -1,19 +1,19 @@
-#include "aieProject2D1App.h"
+#include "PhysicsEngineApp.h"
 #include "Texture.h"
 #include "Font.h"
 #include "Input.h"
 #include <Gizmos.h>
 #include <glm\ext.hpp>
 
-aieProject2D1App::aieProject2D1App() {
+PhysicsEngineApp::PhysicsEngineApp() {
 
 }
 
-aieProject2D1App::~aieProject2D1App() {
+PhysicsEngineApp::~PhysicsEngineApp() {
 
 }
 
-bool aieProject2D1App::startup() {
+bool PhysicsEngineApp::startup() {
 	
 	m_2dRenderer = new aie::Renderer2D();
 
@@ -25,28 +25,23 @@ bool aieProject2D1App::startup() {
 	return true;
 }
 
-void aieProject2D1App::shutdown() {
+void PhysicsEngineApp::shutdown() {
 
 	delete m_font;
 	delete m_2dRenderer;
 }
 
-void aieProject2D1App::update(float deltaTime) {
+void PhysicsEngineApp::update(float deltaTime) {
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
-	
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
-
-	cameraX += 30 * deltaTime;
-	cameraY += 30 * deltaTime;
 }
 
-void aieProject2D1App::draw() {
-
+void PhysicsEngineApp::draw() {
 	// wipe the screen to the background colour
 	clearScreen();
 
@@ -75,8 +70,8 @@ void aieProject2D1App::draw() {
 	// draw the player’s paddle 
 	aie::Gizmos::add2DAABBFilled(glm::vec2(0, -40), glm::vec2(12, 2), glm::vec4(1, 0, 1, 1));
 	// draw your stuff here!
-	static float aspectRatio = 16 / 9.f; 
-	aie::Gizmos::draw2D(glm::ortho<float>(cameraY, cameraX, -100 / aspectRatio, 100 / aspectRatio, -1.0f, 1.0f));
+	static float aspectRatio = 16 / 9.f;
+	aie::Gizmos::draw2D(glm::ortho<float>(-100, 100, -100 / aspectRatio, 100 / aspectRatio, -1.0f, 1.0f));
 
 	// output some text, uses the last used colour
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
