@@ -25,6 +25,10 @@ bool PhysicsEngineApp::startup() {
 
 	m_physicsScene = new PhysicsScene();
 
+	m_physicsScene->setGravity(vec2(0, 0));
+
+	Sphere* ball;
+	ball = new Sphere(vec2(-40, 0), vec2(10, 30), 3.0f, 1, vec4(1, 0, 0, 1));
 	return true;
 }
 
