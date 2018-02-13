@@ -1,5 +1,5 @@
 #pragma once
-#include <glm/vec2.hpp>
+#include <glm/ext.hpp>
 #include <vector>
 #include "Sphere.h"
 
@@ -12,8 +12,8 @@ public:
 
 	~PhysicsScene();
 
-	void addSphere(Sphere * sphere);
-	void removeSphere(Sphere * sphere);
+	void addObject(Object * object);
+	//void removeObject(Object * object);
 	void update(float DT);
 	void updateGizmos();
 	void setGravity(const vec2 gravity) { m_gravity = gravity; }
@@ -25,6 +25,6 @@ protected:
 
 		vec2 m_gravity;
 		float m_timeStep;
-		std::vector<Sphere*> m_sphere;
+		std::vector<Object*> objectList;
 };
 

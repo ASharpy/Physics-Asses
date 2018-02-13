@@ -6,15 +6,29 @@ protected:
 float m_mass;
 vec2 m_position;
 vec2 m_velocity;
-vec2 m_acceleration;
 float m_Rotation;
+
 public:
-	RigidBody(ShapeType shapeID, vec2 position,vec2 velocity, float rotation, float mass);
+	RigidBody() {};
+
+	RigidBody(ShapeType shapeID, vec2 position, vec2 velocity, float rotation, float mass);
+	/*{
+		shapeID = m_shapeID;
+		position = m_position;
+		velocity = m_velocity;
+		rotation = m_Rotation;
+		mass = m_mass;
+	};*/
 
 	~RigidBody();
-	virtual void fixedUpdate(vec2 gravity, float timeStep);
-	virtual void debug();
-	void applyForce(vec2 force);
+	void fixedUpdate(vec2 gravity, float timeStep)
+	{
+		applyForce(gravity * m_mass * timeStep);
+		m_position += m_velocity * timeStep;
+	}
+	
+	//virtual void debug();
+	void applyForce(vec2 force) { m_velocity += force / m_mass; };
 	void ApplyForceToObject(RigidBody* object, vec2 force);
 	virtual bool checkCollision(Object* pOther) = 0;
 
@@ -22,6 +36,5 @@ public:
 	vec2 getVelocity() { return m_velocity; }
 	float getMass() { return m_mass; }
 	float getRotation() { return m_Rotation; }
-	virtual void applyForce(vec2 force) {};
 };
 

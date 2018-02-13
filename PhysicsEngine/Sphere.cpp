@@ -1,12 +1,6 @@
 #include "Sphere.h"
 
-
-
-Sphere::Sphere()
+void Sphere::makeGizmo()
 {
-}
-
-
-Sphere::~Sphere()
-{
+	aie::Gizmos::add2DCircle(vec2(0, 0), m_radius,12,m_colour);
 }
