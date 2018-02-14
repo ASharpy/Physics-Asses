@@ -22,7 +22,10 @@ public:
 	}
 	
 	//virtual void debug();
-	void applyForce(vec2 force) { m_velocity += force / m_mass; };
+	void applyForce(vec2 force) 
+	{ 
+		m_velocity += force / m_mass; 
+	};
 	void ApplyForceToObject(RigidBody* object, vec2 force);
 	//virtual bool checkCollision(Object* pOther) = 0;
 

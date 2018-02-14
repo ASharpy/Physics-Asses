@@ -2,5 +2,5 @@
 
 void Sphere::makeGizmo()
 {
-	aie::Gizmos::add2DCircle(vec2(0, 0), m_radius,50,m_colour);
+	aie::Gizmos::add2DCircle(m_position, m_radius,50,m_colour);
 }

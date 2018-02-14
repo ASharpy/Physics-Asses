@@ -25,9 +25,9 @@ bool PhysicsEngineApp::startup() {
 
 	m_physicsScene = new PhysicsScene();
 
-	m_physicsScene->setGravity(vec2(0, 0));
+	m_physicsScene->setGravity(vec2(0, -9.8f));
 
-	ball = new Sphere(vec2(-40, 0), vec2(10, 30), 3.0f, 20, vec4(1, 0, 0, 1));
+	ball = new Sphere(vec2(-40, 0), vec2(10, 30), 3.0f, 5, vec4(1, 0, 0, 1));
 	
 	m_physicsScene->addObject(ball);
 	return true;
