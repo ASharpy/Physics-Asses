@@ -21,7 +21,7 @@ void PhysicsScene::updateGizmos()
 		var->makeGizmo();
 	}
 }
-PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(vec2(0,0))
+PhysicsScene::PhysicsScene() : m_timeStep(0.1f), m_gravity(vec2(0,0))
 {
 }
 
