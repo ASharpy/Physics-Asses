@@ -27,8 +27,9 @@ bool PhysicsEngineApp::startup() {
 
 	m_physicsScene->setGravity(vec2(0, 0));
 
-	Sphere* ball;
-	ball = new Sphere(vec2(-40, 0), vec2(10, 30), 3.0f, 1, vec4(1, 0, 0, 1));
+	ball = new Sphere(vec2(-40, 0), vec2(10, 30), 3.0f, 20, vec4(1, 0, 0, 1));
+	
+	m_physicsScene->addObject(ball);
 	return true;
 }
 
@@ -45,7 +46,9 @@ void PhysicsEngineApp::update(float deltaTime) {
 
 	aie::Gizmos::clear();
 	m_physicsScene->update(deltaTime);
+	
 	m_physicsScene->updateGizmos();
+
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
@@ -61,6 +64,8 @@ void PhysicsEngineApp::draw() {
 	// draw your stuff here!
 	static float aspectRatio = 16 / 9.f;
 	aie::Gizmos::draw2D(glm::ortho<float>(-100, 100, -100 / aspectRatio, 100 / aspectRatio, -1.0f, 1.0f));
+	
+
 
 	// output some text, uses the last used colour
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);

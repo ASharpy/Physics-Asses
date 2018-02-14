@@ -6,11 +6,11 @@
 
 RigidBody::RigidBody(ShapeType shapeID, vec2 position, vec2 velocity, float rotation, float mass)
 {
-	shapeID = m_shapeID;
-	position = m_position;
-	velocity = m_velocity;
-	rotation = m_Rotation;
-	mass = m_mass;
+	m_shapeID = shapeID;
+	m_position = position;
+	m_mass = mass;
+	m_Rotation = rotation;
+	m_velocity = velocity;
 }
 
 RigidBody::~RigidBody()

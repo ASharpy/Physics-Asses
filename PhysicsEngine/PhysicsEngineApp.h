@@ -17,6 +17,7 @@ public:
 
 protected:
 	PhysicsScene* m_physicsScene;
+	Sphere *ball;
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 };
