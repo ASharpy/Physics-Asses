@@ -22,7 +22,7 @@ protected:
 	vec4 m_colour;
 
 
-//	virtual bool checkCollision(Object* pOther);
+	bool checkCollision(Object* pOther);
 	virtual void makeGizmo();
 };
 

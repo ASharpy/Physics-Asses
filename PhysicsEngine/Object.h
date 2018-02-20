@@ -11,11 +11,12 @@ protected:
 	Object() {}
 	Object(ShapeType shapeID) : m_shapeID(shapeID) {}
 	~Object();
-	ShapeType m_shapeID;
+	
 
 	
 
 public:
+	ShapeType m_shapeID;
 	virtual void fixedUpdate(glm::vec2 gravity, float timeStep) = 0;
 	//virtual void debug() = 0;
 	virtual void makeGizmo() = 0;
