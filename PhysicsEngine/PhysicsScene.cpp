@@ -25,7 +25,7 @@ void PhysicsScene::updateGizmos()
 typedef bool(*fn)(Object*, Object*);
 static fn collisionFunctionArray[] =
 {
-	PhysicsScene::planeToPlane, PhysicsScene::planeToSphere, PhysicsScene::sphereTopPlane, PhysicsScene::sphereToSphere
+	PhysicsScene::planeToPlane, PhysicsScene::planeToSphere, PhysicsScene::sphereToPlane, PhysicsScene::sphereToSphere
 };
 
 void PhysicsScene::checkCollision()
@@ -34,9 +34,18 @@ void PhysicsScene::checkCollision()
 
 	for (int outer = 0; outer < objectCount - 1; outer++)
 	{
-		for (int  inner = 0; inner < length; inner++)
+		for (int  inner = 0; inner < objectCount; inner++)
 		{
-
+			Object* object1 = objectList[outer];
+			Object* object2 = objectList[inner];
+			int shapeId1 = object1->m_shapeID;
+			int shapeId2 = object2->m_shapeID;
+			int functionIdx = (shapeId1 * ShapeType::SPHERE) + shapeId2;
+			fn collisionFunctionPtr = collisionFunctionArray[functionIdx];
+			if (collisionFunctionPtr != nullptr)
+			{
+				collisionFunctionPtr(object1, object2);
+			}
 		}
 	}
 }
