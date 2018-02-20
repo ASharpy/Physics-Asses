@@ -21,6 +21,7 @@ void PhysicsScene::updateGizmos()
 		var->makeGizmo();
 	}
 }
+<<<<<<< HEAD
 
 typedef bool(*fn)(Object*, Object*);
 static fn collisionFunctionArray[] =
@@ -50,6 +51,9 @@ void PhysicsScene::checkCollision()
 	}
 }
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(vec2(0,0))
+=======
+PhysicsScene::PhysicsScene() : m_timeStep(0.1f), m_gravity(vec2(0,0))
+>>>>>>> fbf7a8337e31bb131454940353eb6bbd85fda385
 {
 }
 
