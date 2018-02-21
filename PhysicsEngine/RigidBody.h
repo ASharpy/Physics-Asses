@@ -19,7 +19,7 @@ public:
 	void fixedUpdate(vec2 gravity, float timeStep)
 	{
 		applyForce(gravity * m_mass * timeStep);
-		m_velocity = +m_acceleration * timeStep;
+		m_velocity += m_acceleration;
 		m_position += m_velocity * timeStep;
 	}
 	

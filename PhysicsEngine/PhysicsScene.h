@@ -20,7 +20,7 @@ public:
 	vec2 getGravity() const {return m_gravity;}
 	void setTimeStep(const float timeStep) { m_timeStep = timeStep; }
 	float getTimeStep() const { return m_timeStep; }
-	void checkCollision();
+	bool checkCollision();
 
 	static bool planeToPlane(Object*, Object*);
 	static bool planeToSphere(Object*, Object*);

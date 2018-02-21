@@ -4,6 +4,7 @@
 #include "Input.h"
 #include <Gizmos.h>
 #include <glm\ext.hpp>
+#include <iostream>
 
 
 PhysicsEngineApp::PhysicsEngineApp() {
@@ -28,8 +29,15 @@ bool PhysicsEngineApp::startup() {
 	m_physicsScene->setGravity(vec2(0, -9.8f));
 
 	ball = new Sphere(vec2(-40, 0), vec2(10, 30), 3.0f, 5, vec4(1, 0, 0, 1));
+
+	ball2 = new Sphere(vec2(40, 0), vec2(10, 30), 3.0f, 5, vec4(0, 1, 0, 1));
 	
+
 	m_physicsScene->addObject(ball);
+
+	m_physicsScene->addObject(ball2);
+
+	ball->applyForce(vec2(10,0));
 	return true;
 }
 
@@ -47,7 +55,14 @@ void PhysicsEngineApp::update(float deltaTime) {
 	aie::Gizmos::clear();
 	m_physicsScene->update(deltaTime);
 	
+
 	m_physicsScene->updateGizmos();
+
+	if (m_physicsScene->checkCollision())
+	{
+		std::cout << "worked";
+	}
+	
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))

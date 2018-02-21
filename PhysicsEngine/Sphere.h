@@ -10,11 +10,11 @@ public:
 		m_radius = radius;
 	};
 
-
+	float getRadius() { return m_radius; }
 protected:
 	
 
-	float getRadius() { return m_radius; }
+	
 
 	vec4 getColour() { return m_colour; }
 	~Sphere();

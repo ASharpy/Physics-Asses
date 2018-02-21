@@ -21,7 +21,6 @@ void PhysicsScene::updateGizmos()
 		var->makeGizmo();
 	}
 }
-<<<<<<< HEAD
 
 typedef bool(*fn)(Object*, Object*);
 static fn collisionFunctionArray[] =
@@ -29,7 +28,7 @@ static fn collisionFunctionArray[] =
 	PhysicsScene::planeToPlane, PhysicsScene::planeToSphere, PhysicsScene::sphereToPlane, PhysicsScene::sphereToSphere
 };
 
-void PhysicsScene::checkCollision()
+bool PhysicsScene::checkCollision()
 {
 	int objectCount = objectList.size();
 
@@ -41,26 +40,56 @@ void PhysicsScene::checkCollision()
 			Object* object2 = objectList[inner];
 			int shapeId1 = object1->m_shapeID;
 			int shapeId2 = object2->m_shapeID;
-			int functionIdx = (shapeId1 * ShapeType::SPHERE) + shapeId2;
+			int functionIdx = (shapeId1 * ShapeType::PLANE) + shapeId2;
 			fn collisionFunctionPtr = collisionFunctionArray[functionIdx];
 			if (collisionFunctionPtr != nullptr)
 			{
-				collisionFunctionPtr(object1, object2);
+				return collisionFunctionPtr(object1, object2);
+			}
+			else
+			{
+				return false;
 			}
 		}
 	}
-}
-PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(vec2(0,0))
-=======
-PhysicsScene::PhysicsScene() : m_timeStep(0.1f), m_gravity(vec2(0,0))
->>>>>>> fbf7a8337e31bb131454940353eb6bbd85fda385
-{
+
 }
 
-
-PhysicsScene::~PhysicsScene()
+bool PhysicsScene::planeToPlane(Object * obj1, Object * obj2)
 {
+	return false;
 }
+
+bool PhysicsScene::planeToSphere(Object * obj1, Object * obj2)
+{
+	return false;
+}
+
+bool PhysicsScene::sphereToPlane(Object * obj1, Object * obj2)
+{
+	return false;
+}
+
+bool PhysicsScene::sphereToSphere(Object * sphere1, Object * sphere2)
+{
+	Sphere * Sphere1 = dynamic_cast<Sphere*>(sphere1);
+
+	Sphere* Sphere2 = dynamic_cast<Sphere*>(sphere2);
+
+	float distance1 = glm::length(Sphere1->getPosition() - Sphere2->getPosition());
+
+	
+
+	/*if (distance < Sphere1->getRadius() + Sphere2->getRadius())
+	{
+		return true;
+	}*/
+	return false;
+}
+PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(vec2(0, 0)){}
+
+
+PhysicsScene::~PhysicsScene(){}
 
 void PhysicsScene::addObject(Object * object)
 {

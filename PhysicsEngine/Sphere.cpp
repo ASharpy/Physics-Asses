@@ -2,9 +2,10 @@
 
 bool Sphere::checkCollision(Object * pOther)
 {
+	
 	if (pOther->m_shapeID == SPHERE)
 	{
-		
+	
 	}
 	return false;
 }

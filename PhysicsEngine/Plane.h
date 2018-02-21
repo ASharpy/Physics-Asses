@@ -15,9 +15,9 @@ public:
 		m_normal = normal;
 		m_distanceToOrigin = distance;
 	};
-	virtual void fixedUpdate(vec2 gravity, float timestep);
+	virtual void fixedUpdate(vec2 gravity, float timestep) {};
 	virtual void makeGizmo();
-	virtual void resetPosition();
+	virtual void resetPosition() {};
 	~Plane();
 
 protected:
