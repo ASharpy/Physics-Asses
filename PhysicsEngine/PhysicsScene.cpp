@@ -34,7 +34,7 @@ bool PhysicsScene::checkCollision()
 
 	for (int outer = 0; outer < objectCount - 1; outer++)
 	{
-		for (int  inner = 0; inner < objectCount; inner++)
+		for (int inner = outer + 1; inner < objectCount; inner++)
 		{
 			Object* object1 = objectList[outer];
 			Object* object2 = objectList[inner];
@@ -77,13 +77,13 @@ bool PhysicsScene::sphereToSphere(Object * sphere1, Object * sphere2)
 	Sphere* Sphere2 = dynamic_cast<Sphere*>(sphere2);
 
 	float distance1 = glm::length(Sphere1->getPosition() - Sphere2->getPosition());
-
+	float rDistance = Sphere1->getRadius() +Sphere2->getRadius();
 	
 
-	/*if (distance < Sphere1->getRadius() + Sphere2->getRadius())
+	if (distance1 < rDistance)
 	{
 		return true;
-	}*/
+	}
 	return false;
 }
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(vec2(0, 0)){}
