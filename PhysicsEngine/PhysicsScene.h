@@ -2,6 +2,7 @@
 #include <glm/ext.hpp>
 #include <vector>
 #include "Sphere.h"
+#include "Plane.h"
 
 using namespace glm;
 class PhysicsScene

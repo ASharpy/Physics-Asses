@@ -32,10 +32,13 @@ bool PhysicsEngineApp::startup() {
 
 	ball2 = new Sphere(vec2(40, 0), vec2(10, 30), 3.0f, 5, vec4(0, 1, 0, 1));
 	
+	plane = new Plane(vec2(0, 1), -20);
 
 	m_physicsScene->addObject(ball);
 
 	m_physicsScene->addObject(ball2);
+
+	m_physicsScene->addObject(plane);
 
 	ball->applyForce(vec2(10,0));
 	return true;
@@ -58,11 +61,8 @@ void PhysicsEngineApp::update(float deltaTime) {
 
 	m_physicsScene->updateGizmos();
 
-	if (m_physicsScene->checkCollision())
-	{
-		std::cout << "worked";
-	}
-	
+	m_physicsScene->checkCollision();
+
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))

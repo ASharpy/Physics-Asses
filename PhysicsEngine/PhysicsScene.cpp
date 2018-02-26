@@ -40,7 +40,7 @@ bool PhysicsScene::checkCollision()
 			Object* object2 = objectList[inner];
 			int shapeId1 = object1->m_shapeID;
 			int shapeId2 = object2->m_shapeID;
-			int functionIdx = (shapeId1 * ShapeType::PLANE) + shapeId2;
+			int functionIdx = (shapeId1 * ShapeType::PLANE);
 			fn collisionFunctionPtr = collisionFunctionArray[functionIdx];
 			if (collisionFunctionPtr != nullptr)
 			{
@@ -67,8 +67,39 @@ bool PhysicsScene::planeToSphere(Object * obj1, Object * obj2)
 
 bool PhysicsScene::sphereToPlane(Object * obj1, Object * obj2)
 {
-	return false;
+	Sphere * sphere = dynamic_cast<Sphere*>(obj1);
+
+	Plane* plane = dynamic_cast<Plane*>(obj2);
+
+	if (sphere != nullptr && plane != nullptr)
+	{
+
+
+
+		vec2 planeNormal = plane->getNormal();
+		vec2 spherePos = sphere->getPosition();
+
+		float Pdistance = dot(spherePos, planeNormal) - plane->getDistance();
+
+		if (Pdistance < 0)
+		{
+			planeNormal *= -1;
+			Pdistance *= -1;
+		}
+
+		float intersection = sphere->getRadius() - Pdistance;
+
+		if (intersection > 0)
+		{
+			sphere->setVelocity(vec2(0, 0));
+
+			return true;
+		}
+
+		return false;
+	}
 }
+	
 
 bool PhysicsScene::sphereToSphere(Object * sphere1, Object * sphere2)
 {

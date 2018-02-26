@@ -35,5 +35,8 @@ public:
 	vec2 getVelocity() { return m_velocity; }
 	float getMass() { return m_mass; }
 	float getRotation() { return m_Rotation; }
+
+	void setVelocity(vec2 vel) { m_velocity = vel; }
+
 };
 

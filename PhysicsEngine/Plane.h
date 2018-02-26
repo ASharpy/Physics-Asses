@@ -5,12 +5,12 @@ class Plane : public Object
 {
 	
 public:
-	vec2 getNormal(vec2 Normal) { return  glm::normalize(Normal); }
+	vec2 getNormal() { return  glm::normalize(m_normal); }
 	float getDistance() { return m_distanceToOrigin; }
 	
 	Plane();
 
-	Plane(vec2 normal, float distance) 
+	Plane(vec2 normal, float distance) : Object(ShapeType::PLANE)
 	{
 		m_normal = normal;
 		m_distanceToOrigin = distance;
