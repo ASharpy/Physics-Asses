@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/ext.hpp>
 #include "Gizmos.h"
-enum ShapeType{BOX,SPHERE,PLANE};
+enum ShapeType{PLANE,SPHERE};
 using namespace glm;
 class Object
 {

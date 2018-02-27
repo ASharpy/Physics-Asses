@@ -14,19 +14,21 @@ public:
 
 	RigidBody(ShapeType shapeID, vec2 position, vec2 velocity, float rotation, float mass);
 	
-
 	~RigidBody();
+	
+	void resolveCollision(RigidBody * obj);
+
 	void fixedUpdate(vec2 gravity, float timeStep)
 	{
 		applyForce(gravity * m_mass * timeStep);
-		m_velocity += m_acceleration;
+		m_velocity += gravity * timeStep;
 		m_position += m_velocity * timeStep;
 	}
 	
 	//virtual void debug();
 	void applyForce(vec2 force) 
 	{ 
-		m_acceleration += force / m_mass; 
+		m_velocity += force / m_mass; 
 	};
 	void ApplyForceToObject(RigidBody* object, vec2 force);
 	virtual bool checkCollision(Object* pOther) = 0;

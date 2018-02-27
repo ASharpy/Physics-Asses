@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include "PhysicsScene.h"
-#include "Plane.h"
+#include "Object.h"
 
 class PhysicsEngineApp : public aie::Application {
 public:

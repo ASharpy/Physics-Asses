@@ -26,9 +26,9 @@ bool PhysicsEngineApp::startup() {
 
 	m_physicsScene = new PhysicsScene();
 
-	m_physicsScene->setGravity(vec2(0, -9.8f));
+	m_physicsScene->setGravity(vec2(0, -20));
 
-	ball = new Sphere(vec2(-40, 0), vec2(10, 30), 3.0f, 5, vec4(1, 0, 0, 1));
+	ball = new Sphere(vec2(80, 0), vec2(10, 30), 3.0f, 5, vec4(1, 0, 0, 1));
 
 	ball2 = new Sphere(vec2(40, 0), vec2(10, 30), 3.0f, 5, vec4(0, 1, 0, 1));
 	
@@ -40,7 +40,7 @@ bool PhysicsEngineApp::startup() {
 
 	m_physicsScene->addObject(plane);
 
-	ball->applyForce(vec2(10,0));
+	//ball->applyForce(vec2(10,0));
 	return true;
 }
 
@@ -58,6 +58,10 @@ void PhysicsEngineApp::update(float deltaTime) {
 	aie::Gizmos::clear();
 	m_physicsScene->update(deltaTime);
 	
+	vec2 ballPos = ball->getPosition();
+
+	std::cout <<  ballPos.x;
+	system("cls");
 
 	m_physicsScene->updateGizmos();
 

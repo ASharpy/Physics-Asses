@@ -40,11 +40,11 @@ bool PhysicsScene::checkCollision()
 			Object* object2 = objectList[inner];
 			int shapeId1 = object1->m_shapeID;
 			int shapeId2 = object2->m_shapeID;
-			int functionIdx = (shapeId1 * ShapeType::PLANE);
+			int functionIdx = (shapeId1 * 2) + shapeId2;
 			fn collisionFunctionPtr = collisionFunctionArray[functionIdx];
 			if (collisionFunctionPtr != nullptr)
 			{
-				return collisionFunctionPtr(object1, object2);
+				collisionFunctionPtr(object1, object2);
 			}
 			else
 			{
@@ -52,7 +52,7 @@ bool PhysicsScene::checkCollision()
 			}
 		}
 	}
-
+	
 }
 
 bool PhysicsScene::planeToPlane(Object * obj1, Object * obj2)
@@ -113,7 +113,7 @@ bool PhysicsScene::sphereToSphere(Object * sphere1, Object * sphere2)
 
 	if (distance1 < rDistance)
 	{
-		return true;
+		Sphere1->resolveCollision(Sphere2);
 	}
 	return false;
 }
