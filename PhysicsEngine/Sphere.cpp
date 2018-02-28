@@ -1,14 +1,5 @@
 #include "Sphere.h"
 
-bool Sphere::checkCollision(Object * pOther)
-{
-	
-	if (pOther->m_shapeID == SPHERE)
-	{
-	
-	}
-	return false;
-}
 
 void Sphere::makeGizmo()
 {

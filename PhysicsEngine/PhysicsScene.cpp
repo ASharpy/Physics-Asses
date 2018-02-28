@@ -1,5 +1,6 @@
 #include "PhysicsScene.h"
 
+
 void PhysicsScene::update(float DT)
 {
 	static float accumlatedTime = 0.0f;
@@ -9,6 +10,7 @@ void PhysicsScene::update(float DT)
 		for (auto var : objectList)
 		{
 			var->fixedUpdate(m_gravity, m_timeStep);
+			
 		}
 		accumlatedTime -= m_timeStep;
 	}
@@ -28,7 +30,7 @@ static fn collisionFunctionArray[] =
 	PhysicsScene::planeToPlane, PhysicsScene::planeToSphere, PhysicsScene::sphereToPlane, PhysicsScene::sphereToSphere
 };
 
-bool PhysicsScene::checkCollision()
+void PhysicsScene::checkCollision()
 {
 	int objectCount = objectList.size();
 
@@ -44,11 +46,11 @@ bool PhysicsScene::checkCollision()
 			fn collisionFunctionPtr = collisionFunctionArray[functionIdx];
 			if (collisionFunctionPtr != nullptr)
 			{
-				collisionFunctionPtr(object1, object2);
+				 collisionFunctionPtr(object1, object2);
 			}
 			else
 			{
-				return false;
+				return;
 			}
 		}
 	}
@@ -71,6 +73,8 @@ bool PhysicsScene::sphereToPlane(Object * obj1, Object * obj2)
 
 	Plane* plane = dynamic_cast<Plane*>(obj2);
 
+	
+
 	if (sphere != nullptr && plane != nullptr)
 	{
 
@@ -92,7 +96,7 @@ bool PhysicsScene::sphereToPlane(Object * obj1, Object * obj2)
 		if (intersection > 0)
 		{
 			plane->resolveCollision(sphere);
-
+			sphere->setPosition((sphere->getPosition()  + vec2(0,intersection)));
 			return true;
 		}
 
@@ -117,7 +121,7 @@ bool PhysicsScene::sphereToSphere(Object * sphere1, Object * sphere2)
 	}
 	return false;
 }
-PhysicsScene::PhysicsScene() : m_timeStep(0.001f), m_gravity(vec2(0, 0)){}
+PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(vec2(0, 0)){}
 
 
 PhysicsScene::~PhysicsScene(){}

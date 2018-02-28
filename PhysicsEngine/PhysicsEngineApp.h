@@ -21,6 +21,8 @@ protected:
 	Sphere *ball;
 	Sphere* ball2;
 	Plane *plane;
+	Plane *plane2;
+	Plane *plane3;
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 };

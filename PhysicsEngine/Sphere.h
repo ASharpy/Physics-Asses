@@ -12,10 +12,11 @@ public:
 
 	float getRadius() { return m_radius; }
 
+	void setPosition(vec2 Pos) { m_position = Pos; }
 
 protected:
 	
-
+	
 	
 
 	vec4 getColour() { return m_colour; }
@@ -24,7 +25,7 @@ protected:
 	vec4 m_colour;
 
 
-	bool checkCollision(Object* pOther);
+	//bool checkCollision(Object* pOther);
 	virtual void makeGizmo();
 };
 

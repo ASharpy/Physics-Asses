@@ -28,17 +28,23 @@ bool PhysicsEngineApp::startup() {
 
 	m_physicsScene->setGravity(vec2(0, -20));
 
-	ball = new Sphere(vec2(0, 0), vec2(0, 0), 3.0f, 5, vec4(1, 0, 0, 1));
+	ball = new Sphere(vec2(0, 40), vec2(0, 0), 3.0f, 5, vec4(1, 0, 0, 1));
 
-	ball2 = new Sphere(vec2(40, 0), vec2(0, 0), 3.0f, 5, vec4(0, 1, 0, 1));
+	ball2 = new Sphere(vec2(40, 40), vec2(0, 0), 3.0f, 5, vec4(0, 1, 0, 1));
 	
 	plane = new Plane(vec2(0, 1), -20);
+
+	plane2 = new Plane(vec2(1, 0), -30);
+
+	plane3 = new Plane(vec2(1, 0), 30);
 
 	m_physicsScene->addObject(ball);
 
 	m_physicsScene->addObject(ball2);
 
 	m_physicsScene->addObject(plane);
+	m_physicsScene->addObject(plane3);
+	m_physicsScene->addObject(plane2);
 
 	ball->applyForce(vec2(100,0));
 	return true;
@@ -56,16 +62,12 @@ void PhysicsEngineApp::update(float deltaTime) {
 	aie::Input* input = aie::Input::getInstance();
 
 	aie::Gizmos::clear();
-	m_physicsScene->update(deltaTime);
 	
-	vec2 ballPos = ball->getPosition();
-
-	std::cout <<  ballPos.x;
-	system("cls");
-
+	m_physicsScene->update(deltaTime);
+	m_physicsScene->checkCollision();
 	m_physicsScene->updateGizmos();
 
-	m_physicsScene->checkCollision();
+	
 
 
 	// exit the application
