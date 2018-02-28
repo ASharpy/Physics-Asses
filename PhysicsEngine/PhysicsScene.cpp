@@ -91,7 +91,7 @@ bool PhysicsScene::sphereToPlane(Object * obj1, Object * obj2)
 
 		if (intersection > 0)
 		{
-			sphere->setVelocity(vec2(0, 0));
+			plane->resolveCollision(sphere);
 
 			return true;
 		}
@@ -117,7 +117,7 @@ bool PhysicsScene::sphereToSphere(Object * sphere1, Object * sphere2)
 	}
 	return false;
 }
-PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(vec2(0, 0)){}
+PhysicsScene::PhysicsScene() : m_timeStep(0.001f), m_gravity(vec2(0, 0)){}
 
 
 PhysicsScene::~PhysicsScene(){}

@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include <glm/ext.hpp>
+#include "RigidBody.h"
 class Plane : public Object
 {
 	
@@ -15,6 +16,9 @@ public:
 		m_normal = normal;
 		m_distanceToOrigin = distance;
 	};
+
+	void resolveCollision(RigidBody* obj);
+
 	virtual void fixedUpdate(vec2 gravity, float timestep) {};
 	virtual void makeGizmo();
 	virtual void resetPosition() {};

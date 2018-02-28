@@ -7,7 +7,7 @@ float m_mass;
 vec2 m_position;
 vec2 m_velocity;
 float m_Rotation;
-vec2 m_acceleration = vec2(0,0);
+vec2 m_acceleration;
 
 public:
 	RigidBody() {};
@@ -29,6 +29,7 @@ public:
 	void applyForce(vec2 force) 
 	{ 
 		m_velocity += force / m_mass; 
+		
 	};
 	void ApplyForceToObject(RigidBody* object, vec2 force);
 	virtual bool checkCollision(Object* pOther) = 0;
